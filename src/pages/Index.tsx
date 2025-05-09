@@ -1,11 +1,13 @@
 
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import SearchBar from '@/components/SearchBar';
 import ProductCard, { Product } from '@/components/ProductCard';
 import LoadingState from '@/components/LoadingState';
 import { searchProducts } from '@/services/api';
 import { toast } from "@/components/ui/use-toast";
-import { Image, Search } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Image, Search, ShoppingCart } from 'lucide-react';
 
 const Index = () => {
   const [searchResults, setSearchResults] = useState<Product[]>([]);
@@ -37,8 +39,14 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white border-b">
-        <div className="container py-6">
+        <div className="container py-6 flex justify-between items-center">
           <h1 className="font-bold text-2xl text-gradient">ProductScout AI</h1>
+          <Link to="/products">
+            <Button variant="outline" className="flex items-center gap-2">
+              <ShoppingCart className="h-4 w-4" />
+              Browse Products
+            </Button>
+          </Link>
         </div>
       </header>
 
